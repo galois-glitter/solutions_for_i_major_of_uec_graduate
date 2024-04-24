@@ -1,1 +1,1 @@
-# solutions_for_i_major_of_uec_graduate
+# 電気通信大学 情報・ネットワーク工学専攻 大学院試験解答
