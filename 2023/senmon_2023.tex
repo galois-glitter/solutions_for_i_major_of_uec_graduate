@@ -14,6 +14,7 @@
 \usepackage{tikz}
 \usepackage{amsmath}
 \usepackage{newunicodechar}
+\usepackage{physics}
 \theoremstyle{definition}
 \parindent = 0pt
 \begin{document}
@@ -68,7 +69,7 @@
         \vdots & \ddots & \vdots & \ddots & \vdots \\
         a_{i1} & \cdots & 0  & \cdots & a_{in} \\
         \vdots & \ddots & \vdots & \ddots & \vdots \\
-        a_{n1} & \cdots & a_{ni} & \cdots & a_{nn} \\
+        a_{n1} & \cdots & a_{ni} & \cdots & 0 \\
       \end{bmatrix}
       = \underline{-D^{-1}(L+U)}
     \end{align*}
@@ -118,12 +119,12 @@
     \end{math}
     で，
     \begin{align*}
-      x^{(1)} &= -
+      \vb{x}^{(1)} &= -
       \begin{bmatrix}
         0 & 1/4 \\
         1/2 & 0 \\
       \end{bmatrix}
-      x^{(0)} +
+      \vb{x}^{(0)} +
       \begin{bmatrix}
         15/4 \\ 9/2
       \end{bmatrix}
@@ -132,7 +133,7 @@
         15/4 \\ 9/2
       \end{bmatrix}
       \\
-      x^{(2)} &= -
+      \vb{x}^{(2)} &= -
       \begin{bmatrix}
         0 & 1/4 \\
         1/2 & 0 \\
@@ -149,7 +150,7 @@
         21/8 \\ 21/8
       \end{bmatrix}
       \\
-      x^{(3)} &= -
+      \vb{x}^{(3)} &= -
       \begin{bmatrix}
         0 & 1/4 \\
         1/2 & 0 \\
@@ -170,18 +171,18 @@
 
     \item 
     \begin{align*}
-      \|Ax\| = \max_{i\leq i\leq n}\sum_{j=1}^n |a_{ij}x_j| \leq \max_{i\leq i\leq n}\sum_{j=1}^n |a_{ij}|\max_{1\leq k\leq n}|x_k| = \|A\|\|x\|
+      \|A\vb{x}\| = \max_{1\leq i\leq n}\sum_{j=1}^n |a_{ij}x_j| \leq \max_{1\leq i\leq n}\sum_{j=1}^n |a_{ij}|\max_{1\leq k\leq n}|x_k| = \|A\|\|\vb{x}\|
     \end{align*}
 
     \item (a)の途中式より
     \begin{align*}
-      \|M\| = \max_{1\leq 1\leq n}\sum_{j=1, j\neq i}^n \left|\dfrac{a_{ij}}{a_{ii}}\right| = \max_{1\leq i\leq n}\dfrac{1}{a_{ii}}\sum_{j=1,j\neq i}|a_{ij}| < \max_{1\leq i\leq n}\dfrac{1}{|a_{ii}|} |a_ii| = 1
+      \|M\| = \max_{1\leq i\leq n}\sum_{j=1, j\neq i}^n \left|\dfrac{a_{ij}}{a_{ii}}\right| = \max_{1\leq i\leq n}\dfrac{1}{|a_{ii}|}\sum_{j=1,j\neq i}|a_{ij}| < \max_{1\leq i\leq n}\dfrac{1}{|a_{ii}|} |a_{ii}| = 1
     \end{align*}
-    \item $g(x) =Mx+Nb$とすると，任意の$x\in\mathbb{R}^n$に対して，$g(x)\in R^n$（条件(i)）．$x,y\in\mathbb{R}^n$について，
+    \item $g(\vb{x}) =M\vb{x}+N\vb{b}$とすると，任意の$\vb{x}\in\mathbb{R}^n$に対して，$g(\vb{x})\in \mathbb{R}^n$（条件(i)）．$\vb{x,y}\in\mathbb{R}^n$について，
     \begin{align*}
-      \|g(x)-g(y)\| = \|(Mx+Nb) - (My+Nb)\| = \|M(x-y)\|\leq \|M\|\|x-y\|\;({\rm (d)より})
+      \|g(\vb{x})-g(\vb{y})\| = \|(M\vb{x}+N\vb{b}) - (M\vb{y}+N\vb{b})\| = \|M(\vb{x-y})\|\leq \|M\|\|\vb{x-y}\|\;({\rm (d)より})
     \end{align*}
-    で，(e)より$0\leq\|M\|< 1$であるから条件(ii)，(iii)も成り立つ．よって，定理の条件を満たすため，ヤコビ法によって$g(x) = x\Leftrightarrow Mx+Nb = x\Leftrightarrow Ax = b$の解に収束する．
+    で，(e)より$0\leq\|M\|< 1$であるから条件(ii)，(iii)も成り立つ．よって，定理の条件を満たすため，ヤコビ法によって$g(\vb{x}) = \vb{x}\Leftrightarrow M\vb{x}+N\vb{b} = \vb{x}\Leftrightarrow A\vb{x} = \vb{b}$の解に収束する．
   \end{enumerate}
   \section{離散数学とオートマトン}
 \end{document}
