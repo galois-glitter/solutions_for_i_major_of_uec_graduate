@@ -3,7 +3,8 @@
 \usepackage[dvipdfmx]{graphicx}
 \usepackage[dvipdfmx]{color}
 \usepackage{amsmath,amssymb}
-\usepackage{listings, plistings}
+\usepackage{listings}
+\usepackage{physics}
 \usepackage{pdfpages}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -74,8 +75,9 @@
 \end{eqnarray*}
 
 \subsection*{(1)}
-4次正方行列なので，余因子展開+サラスの公式で計算を行う．
+余因子展開とサラスの公式より、
 \begin{eqnarray*}
+  \det A = 
   \begin{vmatrix}
     -4 & 2  & -1 & -7 \\
     0  & 5  & -3 & 0  \\
@@ -105,11 +107,11 @@
 
 \newpage
 \subsection*{(2)}
-部分空間$V$は$\boldsymbol p_1$と$\boldsymbol p_2$の2つの基底が張る2次元平面となる．$\boldsymbol p_3 \in V$は
+$p_3\in V$であることは、ある$c_1, c_2\in \mathbb{R}$があって
 \begin{eqnarray*}
   \boldsymbol p_3 = c_1 \boldsymbol p_1 + c_2 \boldsymbol p_2 \quad (c_1, c_2 \in \mathbb R)
 \end{eqnarray*}
-が成り立つことを示せばよい．上記の式は
+となることを示せばいい。これは
 \begin{eqnarray*}
   &&\begin{pmatrix}
     \boldsymbol p_1 & \boldsymbol p_2 & -\boldsymbol p_3
@@ -117,8 +119,13 @@
     c_1 \\
     c_2 \\
     1
-  \end{pmatrix}=\boldsymbol 0\\
-  \rightarrow \left(\begin{array}{ccc|c}
+  \end{pmatrix}=\boldsymbol 0
+\end{eqnarray*}
+
+という一次方程式系の階が存在することと同値。行列$(\boldsymbol p_1, \boldsymbol p_2, -\boldsymbol p_3)$の有限回の基本変形により、
+
+\begin{eqnarray*}
+  \left(\begin{array}{ccc|c}
     1  & 7  & -9 & 0 \\
     0  & 1  & -2 & 0 \\
     0  & 2  & -4 & 0 \\
@@ -147,34 +154,10 @@
     2
   \end{pmatrix}
 \end{eqnarray*}
-が得られる．
-\begin{eqnarray*}
-  -5 \boldsymbol p_1 + 2 \boldsymbol p_2=-5\begin{pmatrix}
-    1 \\
-    0 \\
-    0 \\
-    -1
-  \end{pmatrix}+2\begin{pmatrix}
-    7 \\
-    1 \\
-    2 \\
-    -3
-  \end{pmatrix}=\begin{pmatrix}
-    9 \\
-    2 \\
-    4 \\
-    -1
-  \end{pmatrix}=\boldsymbol p_3
-\end{eqnarray*}
-代入した結果，$\boldsymbol p_3$は$\boldsymbol p_1$と$\boldsymbol p_2$の線型結合であるため，$\boldsymbol p_3 \in V$となる．
+が得られる。以上より、$p_3\in V$が示された。
 
 \newpage
 \subsection*{(3)}
-固有値・固有ベクトルの定義より$p_i$に対して
-\begin{eqnarray*}
-  A \boldsymbol p_i = \alpha_i \boldsymbol p_i
-\end{eqnarray*}
-が成り立てば$\alpha_i$はAの固有値，$\boldsymbol p_i$はAの固有ベクトルとなるため，$A \boldsymbol p_i$の計算を行う．
 
 \begin{eqnarray*}
   A \boldsymbol p_1&=&\begin{pmatrix}
@@ -193,7 +176,7 @@
     0 \\
     -3
   \end{pmatrix}=3 \boldsymbol p_1\\
-  A \boldsymbol p_1&=&\begin{pmatrix}
+  A \boldsymbol p_2&=&\begin{pmatrix}
     -4 & 2  & -1 & -7 \\
     0  & 5  & -3 & 0  \\
     0  & 4  & -3 & 0  \\
@@ -209,7 +192,7 @@
     -2 \\
     3
   \end{pmatrix}=-1 \boldsymbol p_2\\
-  A \boldsymbol p_1&=&\begin{pmatrix}
+  A \boldsymbol p_3&=&\begin{pmatrix}
     -4 & 2  & -1 & -7 \\
     0  & 5  & -3 & 0  \\
     0  & 4  & -3 & 0  \\
@@ -224,12 +207,19 @@
     -2  \\
     -4  \\
     21
-  \end{pmatrix}\neq c \boldsymbol p_3 (c \in \mathbb R)
+  \end{pmatrix}
 \end{eqnarray*}
-以上より，$\boldsymbol p_1$には$\alpha_1=3$が，$\boldsymbol p_2$には$\alpha_2=-1$が条件を満たす実数となる．$\boldsymbol p_3$は$A \boldsymbol p_3$をスカラー倍で表せないため$\alpha_3$は存在しない．
+より，$\boldsymbol p_1$には$\alpha_1=3$が，$\boldsymbol p_2$には$\alpha_2=-1$が条件
+
+\begin{eqnarray*}
+  A \boldsymbol p_i = \alpha_i \boldsymbol p_i
+\end{eqnarray*}
+
+を満たす実数となる．一方、$\boldsymbol p_3$は$A \boldsymbol p_3$をスカラー倍で表せないため$\alpha_3$は存在しない．実際、$\vb{p_3}$と$A\vb{p_3}$の各成分の比を考えると、第二成分（$-1$）と第四成分（$-21$）で一致しない。
+
 \newpage
 \subsection*{(4)}
-(3)で求めた固有値の内最小の$\alpha=-1$とAに対する固有ベクトルを求めていく．
+(3)より、$\alpha=-1$である。これを固有値にもつ固有ベクトルを求める。有限回の基本変形で
 \begin{eqnarray*}
   A-\alpha I&=&\begin{pmatrix}
     -3 & 2  & -1 & -7 \\
@@ -241,7 +231,12 @@
     0  & 2 & -1 & 0  \\
     0  & 0 & 0  & 0  \\
     0  & 0 & 0  & 0
-  \end{pmatrix}\begin{pmatrix}
+  \end{pmatrix}
+\end{eqnarray*}
+
+で得られるから、$(A-\alpha I)(x, y, z, w)^\top = \vb{0}$なる方程式の解は以下のようになる。
+\begin{eqnarray*}
+  \begin{pmatrix}
     x \\
     y \\
     z \\
@@ -257,22 +252,7 @@
   \end{aligned}
   \right.
 \end{eqnarray*}
-より，Aと$\alpha=-1$固有ベクトルは
-\begin{eqnarray*}
-  s
-  \begin{pmatrix}
-    0 \\
-    1 \\
-    2 \\
-    0
-  \end{pmatrix}+t \begin{pmatrix}
-    7 \\
-    0 \\
-    0 \\
-    -3
-  \end{pmatrix}
-\end{eqnarray*}
-となるため，固有空間の基底は
+これより，Aの$\alpha=-1$に関する固有ベクトルで、一次独立なものとして$(0,1,2,0)$、$(7, 0, 0, -3)$が取れるため，求める固有空間の基底として
 \begin{eqnarray*}
   \left\langle
   \begin{pmatrix}
@@ -288,7 +268,7 @@
   \end{pmatrix}
   \right\rangle
 \end{eqnarray*}
-となる．
+がとれる。
 
 \newpage
 \subsection*{(5)}
@@ -335,9 +315,12 @@ $A^n$があるからといって，直ぐに$A^n$の対角化に取り掛かる�
 となるため，接平面は
 \begin{eqnarray*}
   z-g(1,1)&=&2(x-1)+4(y-1) \\
-  z&=&2x+4y+15=h(x,y)
 \end{eqnarray*}
-となる．
+となる。整理して、
+
+\begin{equation*}
+  h(x,y) = 2x + 4y + 15
+\end{equation*}
 
 \newpage
 \subsubsection*{(ii)}
@@ -352,13 +335,13 @@ $F$の最大となる$z$座標は(\ref{e_2_1})の条件下での$h(x,y)$の最�
 （$l: \mathbb R^2 \rightarrow \mathbb R, (x,y)\mapsto (x-1)^2+(y-2)^2-20$とすると(\ref{e_2_1})は連続関数である．
 $\left\{ 0 \right\}$は$\mathbb R$の閉集合なので，その逆像$f^{-1}(\{0\})$は$\mathbb R^2$の閉集合である．(\ref{e_2_1})は有界でもあるため，(\ref{e_2_1})は有界閉集合となる．）
 
-ユークリッド空間では$有界閉集合である \Leftrightarrow コンパクト集合である$から，$F$は
+ユークリッド空間では「有界閉集合である $\Leftrightarrow$ コンパクト集合である」から，$F$は
 コンパクト集合であるため最大値と最小値を持つ．なのでラグランジュの未定乗数法を用いて(\ref{e_2_1})上で最大となる点の候補を求める．まず，ラグランジュ関数$L$は次のようになる．
 
 \begin{eqnarray*}
   L(x,y,\lambda)=2x+4y+15 + \lambda\left\{ (x-1)^2 + (y-2)^2 - 20 \right\}
 \end{eqnarray*}
-各変数で偏微分を行い，この関数の極地点を求める．
+各変数で偏微分を行い，この関数の極値点を求める．
 
 \begin{eqnarray*}
   \frac{\partial L}{\partial x}&=&2+2\lambda(x-1)=0 \\
@@ -388,7 +371,7 @@ $\lambda=\pm \frac{1}{2}$より，解の候補は$(x,y)=\left( 1\pm2,  2\pm4 \ri
 \begin{eqnarray*}
   J&=&\int\int_E \frac{x}{x^2+y^2} dxdy, \quad D=\left\{ (x,y) | 1 \leqq x^2+y^2 \leqq 2x, y \geqq 0 \right\} \\
   x&=&rcos\theta, y=rsin\theta とおくと，Dは\\
-  D'&=&\left\{ (x,y) | 1 \leqq r \leqq 2cos\theta, 0 \leqq \theta \leqq \pi \right\}に移る．このとき\\
+  D'&=&\left\{ (x,y) | 1 \leqq r \leqq 2cos\theta, 0 \leqq \theta \leqq \pi \right\}に全単射で移る．このとき\\
   &&\frac{\partial (x,y)}{\partial (r,\theta)}=\begin{vmatrix}
     \frac{\partial x}{\partial r}=cos\theta & \frac{\partial x}{\partial \theta}=-rsin\theta \\
     \frac{\partial y}{\partial r}=sin\theta & \frac{\partial y}{\partial \theta}=rcos\theta
