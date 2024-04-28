@@ -1,0 +1,58 @@
+\documentclass[11pt, titlepage]{jsarticle}
+
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{color}
+\usepackage{amsmath,amssymb}
+\usepackage{listings}
+\usepackage{pdfpages}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\title{電気通信大学院試 I専攻\\20**年度 専門科目: [必須問題]}
+\author{回答作成者: }
+\date{最終更新日: \today}
+
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex
+}
+\renewcommand{\lstlistingname}{図}
+
+\makeatletter
+\AtBeginDocument{%
+  \let\c@figure\c@lstlisting
+  \let\thefigure\thelstlisting
+  \let\ftype@lstlisting\ftype@figure
+}
+\makeatother
+
+\begin{document}
+\chead{電気通信大学院試 I専攻20**年度 必須問題 自作解答}
+\cfoot{\thepage}
+
+\section{線形代数}
+\subsection*{(1)}
+
+\newpage
+\section{微分積分}
+\subsection*{(1)}
+
+\subsection*{(2)}
+\subsubsection*{(i)}
+
+
+\end{document}
