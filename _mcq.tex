@@ -1,14 +1,21 @@
-\documentclass[11pt, titlepage]{jsarticle}
-
+\documentclass{jsarticle}
 \usepackage[dvipdfmx]{graphicx}
 \usepackage[dvipdfmx]{color}
-\usepackage{amsmath,amssymb}
+\usepackage{amsmath, amsthm, amscd, amsfonts, amssymb}
+\usepackage{ascmac}
+\usepackage{mathrsfs}
+\usepackage{url}
 \usepackage{listings}
-\usepackage{pdfpages}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{physics}
 \usepackage{fancyhdr}
+
 \pagestyle{fancy}
 
-\title{電気通信大学院試 I専攻\\20**年度 専門科目: [必須問題]}
+\title{電気通信大学院試 I専攻\\20**年度 専門科目: [選択問題]\\ 自作解答}
 \author{回答作成者: }
 \date{最終更新日: \today}
 
@@ -30,7 +37,6 @@
   numbersep=1zw,
   lineskip=-0.5ex
 }
-\renewcommand{\lstlistingname}{図}
 
 \makeatletter
 \AtBeginDocument{%
@@ -41,14 +47,17 @@
 \makeatother
 
 \begin{document}
-\chead{電気通信大学院試 I専攻20**年度 必須問題 自作解答}
+\maketitle
+\tableofcontents
+\chead{\@title}
 \cfoot{\thepage}
 
-\section{}
+\newpage
+\section{線形代数}
 \subsection*{(1)}
 
 \newpage
-\section{}
+\section{微分積分}
 \subsection*{(1)}
 
 \subsection*{(2)}
