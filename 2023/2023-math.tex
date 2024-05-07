@@ -1,0 +1,405 @@
+\documentclass[11pt, titlepage]{jsarticle}
+
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{color}
+\usepackage{amsmath,amssymb}
+\usepackage{listings}
+\usepackage{physics}
+\usepackage{pdfpages}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\title{電気通信大学院試 I専攻\\2023年度 専門科目: [必須問題]}
+\author{回答作成者: Zerr}
+\date{最終更新日: \today}
+
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex
+}
+\renewcommand{\lstlistingname}{図}
+
+\makeatletter
+\AtBeginDocument{%
+  \let\c@figure\c@lstlisting
+  \let\thefigure\thelstlisting
+  \let\ftype@lstlisting\ftype@figure
+}
+\makeatother
+
+\begin{document}
+\chead{電気通信大学院試 I専攻2023年度 必須問題 自作解答}
+\cfoot{\thepage}
+
+\maketitle
+\section{線形代数}
+\begin{eqnarray*}
+  A&=&\begin{pmatrix}
+    -4 & 2  & -1 & -7 \\
+    0  & 5  & -3 & 0  \\
+    0  & 4  & -3 & 0  \\
+    3  & -2 & 1  & 6
+  \end{pmatrix}\\
+  \boldsymbol p_1&=&\begin{pmatrix}
+    1 \\
+    0 \\
+    0 \\
+    -1
+  \end{pmatrix}
+  ,\boldsymbol p_2=\begin{pmatrix}
+    7 \\
+    1 \\
+    2 \\
+    -3
+  \end{pmatrix}
+  ,\boldsymbol p_3=\begin{pmatrix}
+    9 \\
+    2 \\
+    4 \\
+    -1
+  \end{pmatrix}
+\end{eqnarray*}
+
+\subsection*{(1)}
+余因子展開とサラスの公式より、
+\begin{eqnarray*}
+  \det A = 
+  \begin{vmatrix}
+    -4 & 2  & -1 & -7 \\
+    0  & 5  & -3 & 0  \\
+    0  & 4  & -3 & 0  \\
+    3  & -2 & 1  & 6
+  \end{vmatrix}&=&
+  \begin{vmatrix}
+    -1 & 2  & -1 & -1 \\
+    0  & 5  & -3 & 0  \\
+    0  & 4  & -3 & 0  \\
+    3  & -2 & 1  & 6
+  \end{vmatrix}=
+  \begin{vmatrix}
+    -1 & 2  & -1 & -1 \\
+    0  & 1  & 0  & 0  \\
+    0  & 4  & -3 & 0  \\
+    0  & -2 & 1  & 3
+  \end{vmatrix}\\
+  &=& (-1)
+  \begin{vmatrix}
+    1  & 0  & 0 \\
+    4  & -3 & 0 \\
+    -2 & 1  & 6
+  \end{vmatrix}
+  = (-1)(1\cdot-3\cdot6)=9
+\end{eqnarray*}
+
+\newpage
+\subsection*{(2)}
+$p_3\in V$であることは、ある$c_1, c_2\in \mathbb{R}$があって
+\begin{eqnarray*}
+  \boldsymbol p_3 = c_1 \boldsymbol p_1 + c_2 \boldsymbol p_2 \quad (c_1, c_2 \in \mathbb R)
+\end{eqnarray*}
+となることを示せばいい。これは
+\begin{eqnarray*}
+  &&\begin{pmatrix}
+    \boldsymbol p_1 & \boldsymbol p_2 & -\boldsymbol p_3
+  \end{pmatrix}\begin{pmatrix}
+    c_1 \\
+    c_2 \\
+    1
+  \end{pmatrix}=\boldsymbol 0
+\end{eqnarray*}
+
+という一次方程式系の階が存在することと同値。行列$(\boldsymbol p_1, \boldsymbol p_2, -\boldsymbol p_3)$の有限回の基本変形により、
+
+\begin{eqnarray*}
+  \left(\begin{array}{ccc|c}
+    1  & 7  & -9 & 0 \\
+    0  & 1  & -2 & 0 \\
+    0  & 2  & -4 & 0 \\
+    -1 & -3 & 1  & 0 \\
+  \end{array}\right)&&
+  \rightarrow\left(\begin{array}{ccc|c}
+    1 & 7 & -9 & 0 \\
+    0 & 1 & -2 & 0 \\
+    0 & 2 & -4 & 0 \\
+    0 & 4 & -8 & 0 \\
+  \end{array}\right)
+  \rightarrow\left(\begin{array}{ccc|c}
+    1 & 0 & 5  & 0 \\
+    0 & 1 & -2 & 0 \\
+    0 & 0 & 0  & 0 \\
+    0 & 0 & 0  & 0 \\
+  \end{array}\right)
+\end{eqnarray*}
+となり
+\begin{eqnarray*}
+  \begin{pmatrix}
+    c_1 \\
+    c_2
+  \end{pmatrix}=\begin{pmatrix}
+    -5 \\
+    2
+  \end{pmatrix}
+\end{eqnarray*}
+が得られる。以上より、$p_3\in V$が示された。
+
+\newpage
+\subsection*{(3)}
+
+\begin{eqnarray*}
+  A \boldsymbol p_1&=&\begin{pmatrix}
+    -4 & 2  & -1 & -7 \\
+    0  & 5  & -3 & 0  \\
+    0  & 4  & -3 & 0  \\
+    3  & -2 & 1  & 6
+  \end{pmatrix}\begin{pmatrix}
+    1 \\
+    0 \\
+    0 \\
+    -1
+  \end{pmatrix}=\begin{pmatrix}
+    3 \\
+    0 \\
+    0 \\
+    -3
+  \end{pmatrix}=3 \boldsymbol p_1\\
+  A \boldsymbol p_2&=&\begin{pmatrix}
+    -4 & 2  & -1 & -7 \\
+    0  & 5  & -3 & 0  \\
+    0  & 4  & -3 & 0  \\
+    3  & -2 & 1  & 6
+  \end{pmatrix}\begin{pmatrix}
+    7 \\
+    1 \\
+    2 \\
+    -3
+  \end{pmatrix}=\begin{pmatrix}
+    -7 \\
+    -1 \\
+    -2 \\
+    3
+  \end{pmatrix}=-1 \boldsymbol p_2\\
+  A \boldsymbol p_3&=&\begin{pmatrix}
+    -4 & 2  & -1 & -7 \\
+    0  & 5  & -3 & 0  \\
+    0  & 4  & -3 & 0  \\
+    3  & -2 & 1  & 6
+  \end{pmatrix}\begin{pmatrix}
+    9 \\
+    2 \\
+    4 \\
+    -1
+  \end{pmatrix}=\begin{pmatrix}
+    -29 \\
+    -2  \\
+    -4  \\
+    21
+  \end{pmatrix}
+\end{eqnarray*}
+より，$\boldsymbol p_1$には$\alpha_1=3$が，$\boldsymbol p_2$には$\alpha_2=-1$が条件
+
+\begin{eqnarray*}
+  A \boldsymbol p_i = \alpha_i \boldsymbol p_i
+\end{eqnarray*}
+
+を満たす実数となる．一方、$\boldsymbol p_3$は$A \boldsymbol p_3$をスカラー倍で表せないため$\alpha_3$は存在しない．実際、$\vb{p_3}$と$A\vb{p_3}$の各成分の比を考えると、第二成分（$-1$）と第四成分（$-21$）で一致しない。
+
+\newpage
+\subsection*{(4)}
+(3)より、$\alpha=-1$である。これを固有値にもつ固有ベクトルを求める。有限回の基本変形で
+\begin{eqnarray*}
+  A-\alpha I&=&\begin{pmatrix}
+    -3 & 2  & -1 & -7 \\
+    0  & 6  & -3 & 0  \\
+    0  & 4  & -2 & 0  \\
+    3  & -2 & 1  & 7
+  \end{pmatrix}\rightarrow\begin{pmatrix}
+    -3 & 0 & 0  & -7 \\
+    0  & 2 & -1 & 0  \\
+    0  & 0 & 0  & 0  \\
+    0  & 0 & 0  & 0
+  \end{pmatrix}
+\end{eqnarray*}
+
+で得られるから、$(A-\alpha I)(x, y, z, w)^\top = \vb{0}$なる方程式の解は以下のようになる。
+\begin{eqnarray*}
+  \begin{pmatrix}
+    x \\
+    y \\
+    z \\
+    w
+  \end{pmatrix}=\boldsymbol 0\\
+  &&
+  \left\{ \,
+  \begin{aligned}
+    x & =-\frac{7}{3}w                   \\
+    y & =\frac{1}{2}z                    \\
+    z & =s\quad (s\in\mathbb R, s\neq 0) \\
+    w & =t\quad (t\in\mathbb R, t\neq 0)
+  \end{aligned}
+  \right.
+\end{eqnarray*}
+これより，Aの$\alpha=-1$に関する固有ベクトルで、一次独立なものとして$(0,1,2,0)$、$(7, 0, 0, -3)$が取れるため，求める固有空間の基底として
+\begin{eqnarray*}
+  \left\langle
+  \begin{pmatrix}
+    0 \\
+    1 \\
+    2 \\
+    0
+  \end{pmatrix},\begin{pmatrix}
+    7 \\
+    0 \\
+    0 \\
+    -3
+  \end{pmatrix}
+  \right\rangle
+\end{eqnarray*}
+がとれる。
+
+\newpage
+\subsection*{(5)}
+$A^n$があるからといって，直ぐに$A^n$の対角化に取り掛かると固有ベクトルの数が1つ足りずに詰む為注意(1敗)
+
+(2)より，$\boldsymbol p_3=-5 \boldsymbol p_1 + +2 \boldsymbol p_2$が成り立つため
+\begin{eqnarray*}
+  A^n \boldsymbol p_3 &=& -5 A^n \boldsymbol p_1 + 2 A^n \boldsymbol p_2 \\
+  &=& -5\alpha_1^n p_1 + 2\alpha_2^n p_2 \\
+  &=& -5\cdot(3)^n \begin{pmatrix}
+    1 \\
+    0 \\
+    0 \\
+    -1
+  \end{pmatrix} + 2\cdot(-1)^n \begin{pmatrix}
+    7 \\
+    1 \\
+    2 \\
+    -3
+  \end{pmatrix}\\
+  &=&\begin{pmatrix}
+    -5\cdot(3)^n  + 14\cdot(-1)^n \\
+    2\cdot(-1)^n                  \\
+    4\cdot(-1)^n                  \\
+    5\cdot(3)^n  -6\cdot(-1)^n
+  \end{pmatrix}
+\end{eqnarray*}
+となる．
+
+\newpage
+\section{微分積分}
+\subsection*{(1)}
+\begin{eqnarray*}
+  f(x,y)&=&x^2+y^2\\
+  g(x,y)&=&(x-y-1)^2+(2x+y-2)^2+19
+\end{eqnarray*}
+\subsubsection*{(i)}
+\begin{eqnarray*}
+  &\frac{\partial g}{\partial x}&=2(x-y-1)+2(2x+y-2)\cdot 2=10x+2y-10\\
+  &\frac{\partial g}{\partial y}&=2(x-y-1)\cdot(-1)+2(2x+y-2)=2x+4x-2\\
+  &\frac{\partial g}{\partial x}&(1,1)=2\\
+  &\frac{\partial g}{\partial y}&(1,1)=4
+\end{eqnarray*}
+となるため，接平面は
+\begin{eqnarray*}
+  z-g(1,1)&=&2(x-1)+4(y-1) \\
+\end{eqnarray*}
+となる。整理して、
+
+\begin{equation*}
+  h(x,y) = 2x + 4y + 15
+\end{equation*}
+
+\newpage
+\subsubsection*{(ii)}
+曲面$z=f(x,y)$と平面$P$の共通部分$F$は以下の等式を満たす$(x, y, f(x,y))=(x,y,h(x,y))$の集まりであるので
+\begin{eqnarray}
+  &x^2+y^2=2x+4y+15 \notag\\
+  \Leftrightarrow &x^2+y^2-2x-4x-15=0 \notag\\
+  \Leftrightarrow &(x-1)^2 + (y-2)^2 = 20 \label{e_2_1}
+\end{eqnarray}
+$F$の最大となる$z$座標は(\ref{e_2_1})の条件下での$h(x,y)$の最大値である．
+
+（$l: \mathbb R^2 \rightarrow \mathbb R, (x,y)\mapsto (x-1)^2+(y-2)^2-20$とすると(\ref{e_2_1})は連続関数である．
+$\left\{ 0 \right\}$は$\mathbb R$の閉集合なので，その逆像$f^{-1}(\{0\})$は$\mathbb R^2$の閉集合である．(\ref{e_2_1})は有界でもあるため，(\ref{e_2_1})は有界閉集合となる．）
+
+ユークリッド空間では「有界閉集合である $\Leftrightarrow$ コンパクト集合である」から，$F$は
+コンパクト集合であるため最大値と最小値を持つ．なのでラグランジュの未定乗数法を用いて(\ref{e_2_1})上で最大となる点の候補を求める．まず，ラグランジュ関数$L$は次のようになる．
+
+\begin{eqnarray*}
+  L(x,y,\lambda)=2x+4y+15 + \lambda\left\{ (x-1)^2 + (y-2)^2 - 20 \right\}
+\end{eqnarray*}
+各変数で偏微分を行い，この関数の極値点を求める．
+
+\begin{eqnarray*}
+  \frac{\partial L}{\partial x}&=&2+2\lambda(x-1)=0 \\
+  &\Leftrightarrow& x-1=-\frac{1}{\lambda} \\
+  \frac{\partial L}{\partial y}&=&4+2\lambda(y-2)=0 \\
+  &\Leftrightarrow& y-2=-\frac{2}{\lambda} \\
+  \frac{\partial L}{\partial \lambda}&=&(x-1)^2 + (y-2)^2-20=0 \\
+  &\Leftrightarrow&(-\frac{1}{\lambda})^2 + (-\frac{2}{\lambda})^2-20=0 \\
+  &\Leftrightarrow&20\lambda^2=5\\
+  &\Leftrightarrow&\lambda=\pm \frac{1}{2}\\
+\end{eqnarray*}
+
+$\lambda=\pm \frac{1}{2}$より，解の候補は$(x,y)=\left( 1\pm2,  2\pm4 \right) (複号同順)$である．$h(3,6) = 45 > h(-1, -2) = 5$より，z座標が最大となる点は$\left(3, 6, 45\right)$である．
+
+\newpage
+\subsection*{(2)}
+\subsubsection*{(i)}
+\begin{eqnarray*}
+  I&=&\int\int_D e^{y^2} dxdy, \quad D=\left\{ (x,y) | y^3 \leqq x \leqq y, 0 \leqq y \leqq 1 \right\} \\
+  &=&\int_0^1 \int_{y^3}^y e^{y^2}dxdy \\
+  &=&\int_0^1 ye^{y^2}dy - \int_0^1 y^2\left(ye^{y^2}\right) dy \\
+  &=&\left[ \frac{1}{2}e^{y^2} \right]_0^1 - \left[y^2\frac{1}{2}e^{y^2} \right]_0^1 + \int_0^1 2y\cdot\frac{1}{2}e^{y^2} dy \\
+  &=&-\frac{1}{2} + \int_0^1 ye^{y^2}dy=\left[ \frac{1}{2}e^{y^2} \right]_0^1-\frac{1}{2}=\frac{1}{2} \left( e-2 \right)
+\end{eqnarray*}
+
+\subsubsection*{(ii)}
+\begin{eqnarray*}
+  J&=&\int\int_E \frac{x}{x^2+y^2} dxdy, \quad D=\left\{ (x,y) | 1 \leqq x^2+y^2 \leqq 2x, y \geqq 0 \right\} \\
+  x&=&rcos\theta, y=rsin\theta とおくと，Dは\\
+  D'&=&\left\{ (x,y) | 1 \leqq r \leqq 2cos\theta, 0 \leqq \theta \leqq \pi \right\}に全単射で移る．このとき\\
+  &&\frac{\partial (x,y)}{\partial (r,\theta)}=\begin{vmatrix}
+    \frac{\partial x}{\partial r}=cos\theta & \frac{\partial x}{\partial \theta}=-rsin\theta \\
+    \frac{\partial y}{\partial r}=sin\theta & \frac{\partial y}{\partial \theta}=rcos\theta
+  \end{vmatrix}=r(sin^2\theta + cos^2\theta)=r \\
+  よ&っ&て\\
+  &=&\int_0^\pi \int_1^{2cos\theta} \frac{1}{r}cos\theta \cdot r drd\theta \\
+  &=&\int_0^\pi \left[ rcos\theta \right]_1^{2cos\theta} d\theta\\
+  &=&\int_0^\pi 2cos^2\theta - cos\theta d\theta \\
+  &=&\int_0^\pi 2\left( \frac{cos2\theta + 1}{2} \right) - cos\theta d\theta \\
+  &=&\left[ \frac{1}{2}sin2\theta + \theta - sin\theta \right]_0^\pi \\
+  &=&\pi
+\end{eqnarray*}
+
+\newpage
+\subsubsection*{(iii)}
+\begin{eqnarray*}
+  L_n&=&\sum_{j=1}^n \sum_{k=1}^n \frac{1}{nj+nk+n^2} \\
+  &=&\frac{1}{n^2} \sum_{j=1}^n \sum_{k=1}^n \frac{1}{\frac{j}{n}+\frac{k}{n}+1} \\
+  L&=& \lim_{n\rightarrow\infty} \frac{1}{n^2} \sum_{j=1}^n \sum_{k=1}^n \frac{1}{\frac{j}{n}+\frac{k}{n}+1}\\
+  &=&\int_0^1\int_0^1 \frac{1}{x+y+1}dxdy\\
+  &=&\int_0^1\left[ \log\left| x+y+1 \right| \right]_0^1 dy\\
+  &=&\int_0^1 \log \left| y+2 \right| - \log \left| y+1 \right| dy\\
+  &&y+2=u, dy=du,\quad y+1=v, dy=dv \\
+  &=&\int_2^3 \log\left| u \right|du - \int_1^2 \log\left| v \right|dv\\
+  &=&\left[ u\log\left| u \right| + u\right]_2^3 - \left[v\log\left| v \right| + v\right]_1^2 \\
+  &=&3\log3 + 3 - (2\log2 + 2) - (2\log2 + 2) + 1\\
+  &=&3\log3-4\log2
+\end{eqnarray*}
+
+
+\end{document}
