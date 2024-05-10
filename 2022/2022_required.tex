@@ -1,0 +1,135 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{color}
+\usepackage{amsmath, amsthm, amscd, amsfonts, amssymb}
+\usepackage{ascmac}
+\usepackage{mathrsfs}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\examYear}{2022}
+\newcommand{\answerCreater}{glitter}
+
+\title{電気通信大学\\ 情報・ネットワーク工学専攻（I専攻）\\ \examYear 年度入学試験 \\ 専門科目: [必須問題] 自作解答}
+\author{解答作成者: \answerCreater}
+\date{最終更新日: \today}
+
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex
+}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+  
+\end{abstract}
+\tableofcontents
+\lhead{電気通信大学 I専攻 \examYear 年度入試 専門科目: [必須問題] 自作解答}
+\cfoot{\thepage}
+
+\newpage
+\section{線形代数}
+\begin{enumerate}[(1)]
+  \item
+  \begin{align*}
+    |A- \lambda E| = 
+    \begin{vmatrix}
+      -1 -\lambda & 1 + a & -2 \\
+      0 & 1 - \lambda & 0 \\
+      4 & 1-a & 5 -\lambda \\
+    \end{vmatrix}
+    = -
+    \begin{vmatrix}
+      1-\lambda & 0 \\
+      1-a & 5 -\lambda \\
+    \end{vmatrix}
+    + 4
+    \begin{vmatrix}
+      1 + a & -2 \\
+      1 -\lambda & 0 \\
+    \end{vmatrix}
+  \end{align*}
+
+  \item (1)より，$\lambda_1 = 3$．$A-\lambda_1 E$の有限回の基本変形によって，
+  \begin{align*}
+    A -\lambda_1 E
+  \end{align*}
+  
+  が得られるので，
+
+  \item (1)より，$\lambda_2 = 1$である．$(\lambda_2 E - A)^2$の有限回の基本変形によって，
+  \begin{align*}
+    (\lambda_2 E- A)^2 =
+    \begin{matrix}
+      2 & -1-a & 2 \\
+      0 & 0 & 0 \\
+      -4 & a -1 & -4 \\
+    \end{matrix}^2
+    =
+    \begin{matrix}
+      -4 & -4 & -4 \\
+       0 & 0 & 0 \\
+       8 & 8 & 8 \\
+    \end{matrix}
+  \end{align*}
+
+  を得るから，$\dim\ker f=\;,\dim\Im f = $である．
+
+  \item 
+\end{enumerate}
+
+\newpage
+\section{微分積分}
+\begin{enumerate}[(1)]
+  \item 
+  \begin{align*}
+    f_x(0,0) &= \\
+    f_y(0,0) &= \\
+    f_{xx}(0,0) &= \\
+    f_{xy}(0,0) &= \\
+    f_{yy}(0,0) &= \\
+  \end{align*}
+
+  \item 
+  \begin{align*}
+    g_x &= (2x+y)e^y \\
+    g_y &= (x^2 + xy + x)e^y=x(x + y + 1)e^y\\
+    g_{xx} &= 2e^y\\
+    g_{xy} &= (y + 1)e^y\\
+    g_{yy} &= (x^2 + xy + 2x)e^y\\
+  \end{align*}
+  \item 
+  \begin{enumerate}[(i)]
+    \item $x=r\cos\theta, y=r\sin\theta$で，$D_1$は$\{(r,\theta)\in\mathbb{R}^2| 0\leq r\leq \pi,-\pi \leq \theta < \pi\}$と連続に1対1に対応する．
+    \begin{align*}
+      I_1 =   
+    \end{align*}
+
+    \item $u = x + y, v = x-y$で，$D_2$は$\{(u,v)\in\mathbb{R}^2\}$
+  \end{enumerate}
+\end{enumerate}
+
+
+\end{document}
